@@ -23,7 +23,7 @@ No wallet connects on the page — everything happens through the user's agent.
 | Marketplace | Own escrow, 0% fee, 5% royalty to owner, no floor price |
 | Owner / royalty / revenue | BAW `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` |
 | Language / times | English only / UTC only |
-| X | To be announced |
+| X | @Seraphinft (https://x.com/Seraphinft) |
 
 ## File map
 
