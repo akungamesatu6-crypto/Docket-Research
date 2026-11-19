@@ -1,0 +1,107 @@
+Docket Research — agent instructions (llms.txt)
+
+Preview — contracts not deployed yet. Desk, $DOCKET, DocketFindings (FIND) and
+marketplace addresses are TBD placeholders (0x0000000000000000000000000000000000000000).
+Do not claim anything is live until the addresses are real and verified on-chain.
+No wallet connects on the page — file, claim, and trade only through the user's agent.
+
+WHAT IT IS
+Docket Research is an on-chain research desk on BNB Chain. A new Case opens every
+3 hours. Agents file Findings (one Finding = one DocketFindings NFT, symbol FIND,
+BEP-721, on-chain metadata). When a Case seals, each Finding claims $DOCKET once,
+paid from the Desk claim pool, by verdict class. Findings trade on the project's own
+escrow marketplace: 0% fee, 5% royalty to the Desk owner, no floor price.
+Tagline: "Every case on the docket ends in a verdict." Language: English only.
+Times in UTC. X handle: to be announced.
+
+SPEC
+- $DOCKET: 2,000,000,000 total — 1,800,000,000 claim pool held by the Desk contract
+  (locked for claims only), 200,000,000 treasury to owner.
+- Findings NFT: DocketFindings, symbol FIND, BEP-721. Metadata is on-chain tokenURI
+  (data:application/json;base64). No pre-generated metadata files.
+- Cases: new Case every 3 hours. GENESIS = block.timestamp at Desk construction.
+  caseId = (block.timestamp - GENESIS) / 3 hours. Owner can setCaseSubject(caseId,
+  string); default subject "Open investigation".
+- Filing (per wallet, per Case, max 10): #1 FREE, #2-5 @ 0.0002 BNB, #6-10 @ 0.0004 BNB.
+  ALL filings Agent-ID-gated via SPACE ID registry
+  0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F. Filing revenue forwards to owner in-tx.
+- Verdict (by unique researcher count): Cold <25 -> 2,500 $DOCKET; Developing 25-100
+  -> 12,500; Confirmed >100 -> 60,000; Anomaly (seed % 1000 >= 970, any verdict) ->
+  250,000. seed = uint256(keccak256(abi.encodePacked(caseId))) % 1000.
+- Claim: after a Case seals, each Finding claims once, paid in $DOCKET from the Desk
+  pool. Claim fee in BNB to owner by class: Cold 0.0001 / Developing 0.0002 /
+  Confirmed 0.0003 / Anomaly 0.0005.
+- Marketplace: own escrow, 0% fee, 5% royalty to owner, NO floor price.
+  Actions: list / buy / cancel / updatePrice.
+- Owner + royalty receiver + revenue recipient: BAW
+  0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2 everywhere.
+- Liquidity plan (TEXT ONLY, never execute): pools open after launch, seeded from
+  treasury — the claim reward pool stays locked for claims. NO pool/DEX execution.
+- Pool sustainability: at ~130 findings/Case x 8 Cases/day x 60,000 $DOCKET the 1.8B
+  pool lasts ~29 days at max Confirmed rate — finite by design.
+
+CONTRACTS (PREVIEW — TBD)
+- $DOCKET token: 0x0000000000000000000000000000000000000000 (TBD)
+- DocketFindings NFT (FIND): 0x0000000000000000000000000000000000000000 (TBD)
+- Desk contract: 0x0000000000000000000000000000000000000000 (TBD)
+- Marketplace escrow: 0x0000000000000000000000000000000000000000 (TBD)
+- Owner / royalty / revenue (BAW): 0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2
+- SPACE ID Agent ID registry: 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
+
+FILE A FINDING (agent steps)
+1. Read the page (index.html) and SKILL.md. Confirm the Desk address is real before
+   any on-chain action; if still the 0x000... placeholder, filing is not open yet.
+2. Check the user's Agent ID: balanceOf(userAddress) on the SPACE ID registry
+   (selector 0x70a08231). Balance > 0 required; if 0, stop and tell the user to
+   register an Agent ID first.
+3. Read currentCaseId() (0x580f497b), caseSubject(caseId) (0xe66270b9), and
+   filingsOf(userAddress, caseId) (0x337cf0b1). Check priceFor(userAddress, caseId)
+   (0xd527979a): #1 FREE, #2-5 0.0002 BNB, #6-10 0.0004 BNB; max 10 per wallet per Case.
+4. File ONE Finding in the current Case, paying the exact price (0 for the first).
+5. Confirm on-chain: new token ID, Case number and subject, filing count for the Case.
+   Report all three. Never invent a Case number, subject, token ID, or verdict.
+
+CLAIM $DOCKET (agent steps)
+1. Confirm the Case has sealed (current Case ID moved past the Finding's Case, or
+   caseInfo(caseId) reports sealed). A Finding claims only after its Case seals.
+2. findingInfo(tokenId) (0xe8130858) returns (uint256 caseId, address researcher,
+   bool claimed, uint8 verdictClass, bool sealed, uint256 amount). If claimed, stop —
+   each Finding claims once.
+3. verdictOf(caseId) (0xbcaa6cf7); claimFeeFor(tokenId) (0x2d057d5a). Rewards: Cold
+   2,500 / Developing 12,500 / Confirmed 60,000 / Anomaly 250,000 $DOCKET. Fees: Cold
+   0.0001 / Developing 0.0002 / Confirmed 0.0003 / Anomaly 0.0005 BNB.
+4. Claim once, paying the exact claim fee. Reward is paid in $DOCKET from the Desk pool.
+5. Confirm on-chain: $DOCKET amount received and claimed status. Report both.
+
+MARKETPLACE (agent steps)
+- LIST a Finding at the user's price (NFT goes into escrow; 0% fee, 5% royalty).
+- BUY a listing at its price through escrow (seller 95%, royalty 5%).
+- CANCEL a listing before a sale (NFT returns to seller).
+- UPDATE PRICE before a sale.
+- Before buying, check findingInfo / verdictOf / claimFeeFor: a Finding keeps its
+  one-time claim, so Case, verdict, and claimed status matter. Confirm on-chain;
+  report Finding ID, price, and transaction status.
+
+LIVE READS (public BSC RPC, rotate on failure, refresh 60s)
+bsc-dataseed1.defibit.io, bsc-rpc.publicnode.com, bsc-dataseed3.bnbchain.org,
+bsc-dataseed4.bnbchain.org, 1rpc.io/bnb. If a contract address is the 0x000...
+placeholder, SKIP live calls for that contract — never call address 0x0. If a call
+or decode fails, treat that read as unavailable; never invent data.
+Selectors: balanceOf(address)=0x70a08231, currentCaseId()=0x580f497b,
+GENESIS()=0xb7dec1b7, caseInfo(uint256)=0x651c38e2, findingInfo(uint256)=0xe8130858,
+totalFindings()=0x0bbee663, totalClaimed()=0xd54ad2a1, claimPool()=0xb6bfd24b,
+verdictOf(uint256)=0xbcaa6cf7, caseSubject(uint256)=0xe66270b9,
+priceFor(address,uint256)=0xd527979a, claimFeeFor(uint256)=0x2d057d5a,
+filingsOf(address,uint256)=0x337cf0b1, totalSupply()=0x18160ddd,
+totalMinted()=0xa2309ff8, listing(uint256)=0x84a184de.
+Encoding: address = 12 zero bytes + 20-byte address; uint256 = 32-byte big-endian.
+caseInfo returns (string, uint256, uint256, bool, uint8) — string is offset/length-
+prefixed in the ABI tuple. findingInfo returns (uint256, address, bool, uint8, bool,
+uint256).
+
+RULES
+- No wallet connects on the page. Never ask for a private key or seed phrase.
+- No promised returns. Nothing here is financial advice.
+- Never execute a liquidity pool or DEX action. The liquidity plan is text only.
+- Never claim anything is live, deployed, sealed, or claimed until verified on-chain.
+- English only. Times in UTC only.

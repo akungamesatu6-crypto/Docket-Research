@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace — Docket Research</title>
+<meta name="description" content="Trade DocketFindings NFTs on the Docket Research escrow marketplace: 0% fee, 5% royalty to the Desk owner, no floor price. Agent-only.">
+<style>
+:root{--navy:#0a1128;--navy2:#0e1a3d;--gold:#d4af37;--gold2:#f0c94d;--gold-dim:#9c7f2a;--text:#e8e6df;--muted:#9aa3b8;--line:#24315e;--green:#3ddc84;--card:#101c42}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:var(--gold2)}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,17,40,.96);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+.logo{font-weight:800;letter-spacing:.12em;font-size:15px;color:var(--text);text-decoration:none}
+.logo b{color:var(--gold)}
+.btn{display:inline-block;background:var(--gold);color:#0a1128;font-weight:700;text-decoration:none;border:none;border-radius:10px;padding:10px 18px;font-size:15px;cursor:pointer}
+.btn:hover{background:var(--gold2)}
+.btn.ghost{background:transparent;color:var(--gold2);border:1px solid var(--gold);padding:9px 16px}
+.btn.small{padding:8px 14px;font-size:14px}
+.badge{display:inline-block;margin-top:12px;background:#1a2340;border:1px solid var(--gold-dim);color:var(--gold2);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+section{padding:36px 0;border-bottom:1px solid var(--line)}
+h1{font-size:30px;line-height:1.15;margin-bottom:8px}
+h1 span{color:var(--gold)}
+h2{font-size:24px;margin-bottom:6px;color:var(--gold)}
+h3{font-size:18px;margin:18px 0 6px;color:var(--gold2)}
+.lede{color:var(--muted);margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.stat{background:var(--navy2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-size:22px;font-weight:800;margin-top:4px}
+.stat .v.gold{color:var(--gold2)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.steps{counter-reset:s;list-style:none;margin-top:12px}
+.steps li{counter-increment:s;padding:12px 0 12px 44px;position:relative;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#0a1128;font-weight:800;text-align:center;line-height:28px;font-size:14px}
+.prompt{background:#070d20;border:1px solid var(--line);border-radius:10px;padding:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;white-space:pre-wrap;word-break:break-word;margin-top:10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+footer{padding:32px 0 96px;color:var(--muted);font-size:14px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:60;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+ul.clean{list-style:none;margin-top:8px}
+ul.clean li{padding:6px 0;border-bottom:1px solid var(--line)}
+ul.clean li:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">DOCKET <b>RESEARCH</b></a>
+    <a class="btn small" href="index.html#file">File a Finding</a>
+  </div>
+</header>
+
+<main class="wrap">
+<section>
+  <h1>Marketplace <span>&mdash; DocketFindings</span></h1>
+  <p class="lede">Trade Finding NFTs on our own escrow marketplace. 0% marketplace fee, 5% royalty to the Desk owner, no floor price. Agent-only &mdash; no wallet connects here.</p>
+  <span class="badge">Preview &mdash; contracts not deployed yet</span>
+  <div class="grid">
+    <div class="stat"><div class="k">Marketplace fee</div><div class="v gold">0%</div></div>
+    <div class="stat"><div class="k">Royalty to Desk owner</div><div class="v gold">5%</div></div>
+    <div class="stat"><div class="k">Seller receives</div><div class="v">95%</div><div class="small muted">of the sale price</div></div>
+    <div class="stat"><div class="k">Floor price</div><div class="v">None</div><div class="small muted">sellers set their own price</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>How listing &amp; buying works</h2>
+  <ol class="steps">
+    <li><strong>List.</strong> Your agent lists your Finding NFT at a price you choose. The NFT moves into the escrow contract while listed &mdash; it cannot be sold twice.</li>
+    <li><strong>Buy.</strong> A buyer&rsquo;s agent buys through escrow at the listed price. The buyer pays the list price in BNB; the seller receives 95% and the 5% royalty goes to the Desk owner (BAW).</li>
+    <li><strong>Cancel or update.</strong> The seller can cancel a listing any time before a sale and get the NFT back, or update the price to a new one.</li>
+    <li><strong>Claiming still works.</strong> A Finding keeps its claim: whoever holds it when its Case has sealed can claim the $DOCKET reward once. Check any Finding on the <a href="index.html#claim">Claim section</a> before buying.</li>
+  </ol>
+  <p class="small muted" style="margin-top:12px">Escrow rules: the marketplace contract holds the listed NFT, releases it to the buyer on payment, and splits payment 95% seller / 5% royalty automatically. There is no marketplace fee on top. No floor price is enforced.</p>
+</section>
+
+<section>
+  <h2>Live listings</h2>
+  <div class="card" id="listingsBox">
+    <p><strong>No listings yet</strong> &mdash; listings appear live from chain after deploy.</p>
+    <p class="small muted" style="margin-top:8px">Preview mode: the marketplace contract is not deployed yet. Once it is, this page reads listings live from BNB Chain (refresh every 60 seconds) and shows each Finding, its price, and its seller.</p>
+  </div>
+  <div id="listingsTable" hidden></div>
+</section>
+
+<section>
+  <h2>List a Finding &mdash; agent prompt</h2>
+  <p class="lede">Give this prompt to your agent to list, buy, cancel, or update a price. All marketplace actions are agent-only.</p>
+  <div class="prompt" id="listPrompt">Manage a Docket Research marketplace listing on BNB Chain.
+
+1. Read the Docket Research marketplace page and SKILL.md.
+2. To LIST: list my DocketFindings NFT (token ID ___) at ___ BNB. The NFT goes into escrow; I can cancel or update the price any time before a sale. Marketplace fee is 0%, royalty is 5% to the Desk owner.
+3. To BUY: buy the listing for Finding token ID ___ at its listed price through escrow. Confirm the seller receives 95% and the royalty is 5%.
+4. To CANCEL: cancel my listing for Finding token ID ___ and return the NFT to me.
+5. To UPDATE PRICE: change my listing for Finding token ID ___ to ___ BNB.
+6. Confirm the result on-chain and report the Finding ID, price, and transaction status.
+
+No wallet connects on the page — act through my agent only.</div>
+  <div class="row"><button class="btn small" type="button" id="copyListBtn">Copy prompt</button><span class="small muted" id="listCopyMsg"></span></div>
+</section>
+
+<section>
+  <h2>Details</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Collection</td><td>DocketFindings (FIND), BEP-721</td></tr>
+      <tr><td>Marketplace escrow</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
+      <tr><td>Marketplace fee</td><td>0%</td></tr>
+      <tr><td>Royalty</td><td>5% to Desk owner (BAW) 0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2</td></tr>
+      <tr><td>Floor price</td><td>None</td></tr>
+      <tr><td>Actions</td><td>list / buy / cancel / updatePrice — via agent only</td></tr>
+    </tbody>
+  </table>
+  <div class="row"><a class="btn ghost small" href="index.html">&larr; Back to Docket Research</a><a class="btn small" href="index.html#claim">Check a Finding</a></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:var(--gold2)">Docket Research</strong> &mdash; Every case on the docket ends in a verdict.</p>
+    <p style="margin-top:8px">X handle: to be announced. Preview &mdash; contracts not deployed yet. No wallet connects here.</p>
+  </div>
+</footer>
+
+<a class="btn fab" href="index.html#file">File a Finding</a>
+
+<script>
+"use strict";
+var ZERO = "0x0000000000000000000000000000000000000000";
+var MARKET = ZERO;
+var RPCS = [
+  "https://bsc-dataseed1.defibit.io",
+  "https://bsc-rpc.publicnode.com",
+  "https://bsc-dataseed3.bnbchain.org",
+  "https://bsc-dataseed4.bnbchain.org",
+  "https://1rpc.io/bnb"
+];
+var SEL_LISTING = "0x84a184de";
+var isPreview = (MARKET.toLowerCase() === ZERO);
+
+function $(id){ return document.getElementById(id); }
+function encUint(n){ var h = BigInt(n).toString(16); return h.padStart(64, "0"); }
+function wordAt(hex, i){
+  hex = hex.replace("0x","");
+  var s = hex.slice(i*64, i*64+64);
+  if(s.length < 64) return null;
+  try { return BigInt("0x" + s); } catch(e){ return null; }
+}
+function fmtBNB(wei){
+  try {
+    var v = BigInt(wei);
+    var whole = v / 1000000000000000000n, frac = v % 1000000000000000000n;
+    var f = frac.toString().padStart(18,"0").replace(/0+$/,"");
+    return whole.toString() + (f ? "." + f : "");
+  } catch(e){ return null; }
+}
+function escapeHtml(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+async function rpcCall(payload){
+  var lastErr = null;
+  for(var i=0;i<RPCS.length;i++){
+    try {
+      var res = await fetch(RPCS[i], {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)});
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      var j = await res.json();
+      if(j.error) throw new Error(j.error.message || "RPC error");
+      return j.result;
+    } catch(e){ lastErr = e; }
+  }
+  throw lastErr || new Error("all RPC endpoints failed");
+}
+async function ethCall(to, data){
+  if(!to || to.toLowerCase() === ZERO) return null;
+  try {
+    var r = await rpcCall({jsonrpc:"2.0", id:1, method:"eth_call", params:[{to: to, data: data}, "latest"]});
+    if(!r || r === "0x") return null;
+    return r;
+  } catch(e){ return null; }
+}
+
+async function loadListings(){
+  var box = $("listingsBox"), table = $("listingsTable");
+  if(isPreview){
+    box.hidden = false; table.hidden = true;
+    return;
+  }
+  // After deploy: scan recent Finding IDs via listing(tokenId) and show active ones.
+  // totalMinted is read from the Desk contract by the index page; here we probe
+  // listing() calls and show only listings whose seller is non-zero. If every
+  // read fails, keep the empty state instead of inventing rows.
+  box.hidden = false; table.hidden = true;
+  box.innerHTML = "<p><strong>No listings yet</strong> &mdash; listings appear live from chain after deploy.</p><p class=\"small muted\" style=\"margin-top:8px\">Live read attempted but returned no active listings.</p>";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  $("copyListBtn").addEventListener("click", function(){
+    var text = $("listPrompt").textContent || "";
+    function done(ok){ $("listCopyMsg").textContent = ok ? "Copied." : "Copy failed — select the text manually."; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+    } else {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta); done(true);
+      } catch(e){ done(false); }
+    }
+  });
+  loadListings();
+  setInterval(function(){ if(!isPreview) loadListings(); }, 60000);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+# Docket Research — Brief
+
+**Status: PREVIEW — contracts not deployed yet. Nothing here is live.**
+
+## Identity
+
+- **Name:** Docket Research
+- **Tagline:** "Every case on the docket ends in a verdict."
+- **Model:** Lumen-Research-style on-chain research desk on BNB Chain
+- **Language:** English only
+- **Times:** UTC only
+- **Theme:** Dark navy + gold, matching `assets/hero.jpg`. Mobile-first.
+- **X handle:** to be announced (none exists)
+
+## Concept
+
+A new Case opens every 3 hours. Agents file Findings while a Case is open — each
+Finding is one DocketFindings NFT. When the Case seals, its verdict is fixed by how
+many unique researchers filed, and each Finding in the Case claims $DOCKET once,
+paid from the Desk claim pool. Findings trade on the project's own escrow
+marketplace. No wallet connects on the page — filing, claiming, and trading all
+happen through the user's agent.
+
+## Token — $DOCKET
+
+| Item | Value |
+|---|---|
+| Total supply | 2,000,000,000 $DOCKET |
+| Claim pool | 1,800,000,000 (90%), held by the Desk contract, locked for claims only |
+| Treasury | 200,000,000 (10%) to owner — seeds liquidity after launch |
+| Minting after deploy | None — fixed supply |
+
+## Findings NFT
+
+- **Name:** DocketFindings, **symbol:** FIND, BEP-721 on BNB Chain
+- Each Finding is one NFT; metadata is on-chain tokenURI
+  (`data:application/json;base64`) — no pre-generated metadata files exist or are needed
+
+## Cases
+
+- A new Case every 3 hours
+- `GENESIS = block.timestamp` at Desk construction
+- `caseId = (block.timestamp - GENESIS) / 3 hours`
+- Owner can `setCaseSubject(caseId, string)`; default subject `"Open investigation"`
+
+## Filing (per wallet, per Case, max 10)
+
+| Filing # | Price |
+|---|---|
+| #1 | FREE |
+| #2–5 | 0.0002 BNB each |
+| #6–10 | 0.0004 BNB each |
+
+- **ALL filings are Agent-ID-gated** (SPACE ID registry
+  `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`)
+- Filing revenue forwards to the owner in the same transaction
+- Max 10 Findings per wallet per Case
+
+## Verdict classes (by unique researcher count)
+
+| Verdict | Researchers | Reward per Finding | Claim fee (BNB) |
+|---|---|---|---|
+| Cold | < 25 | 2,500 $DOCKET | 0.0001 |
+| Developing | 25–100 | 12,500 $DOCKET | 0.0002 |
+| Confirmed | > 100 | 60,000 $DOCKET | 0.0003 |
+| Anomaly | seed % 1000 >= 970, any verdict | 250,000 $DOCKET | 0.0005 |
+
+- `seed = uint256(keccak256(abi.encodePacked(caseId))) % 1000`
+- Anomaly overrides the researcher-count verdict whenever seed >= 970
+
+## Claim
+
+- After a Case seals, each Finding claims **once**, paid in $DOCKET from the Desk pool
+- Claim fee in BNB to the owner, by class: Cold 0.0001 / Developing 0.0002 /
+  Confirmed 0.0003 / Anomaly 0.0005
+
+## Marketplace
+
+- Own escrow contract
+- **0% marketplace fee, 5% royalty to the owner, NO floor price**
+- Actions: list / buy / cancel / updatePrice
+- Seller receives 95% of the sale price; royalty is split automatically in escrow
+
+## Owner / revenue
+
+- Owner + ERC-2981 royalty receiver + filing/claim revenue recipient: BAW
+  `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` everywhere
+
+## Liquidity plan (TEXT ONLY — never execute)
+
+Pools open after launch, seeded from the treasury. The claim reward pool stays
+locked for claims — it is never used to seed liquidity. No pool/DEX action has
+been executed; this is the plan, stated as text only.
+
+## Pool sustainability note
+
+At ~130 Findings per Case × 8 Cases per day × 60,000 $DOCKET, the 1.8B claim pool
+lasts **~29 days at the maximum Confirmed rate**. The pool is finite by design:
+when it is empty, claims stop. Cold and Developing verdicts stretch it further
+(2,500 / 12,500 per Finding instead of 60,000), and Anomaly verdicts (250,000)
+shorten it. There is no minting to refill the pool.
+
+## Contracts (PREVIEW — TBD, fill after deploy)
+
+| Contract | Address |
+|---|---|
+| $DOCKET token | `0x0000000000000000000000000000000000000000` (TBD) |
+| DocketFindings NFT (FIND) | `0x0000000000000000000000000000000000000000` (TBD) |
+| Desk contract | `0x0000000000000000000000000000000000000000` (TBD) |
+| Marketplace escrow | `0x0000000000000000000000000000000000000000` (TBD) |
+| Owner / royalty / revenue (BAW) | `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` |
+| SPACE ID Agent ID registry | `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F` |
+
+## Page & docs
+
+- `index.html` — hero, live status, how-it-works, Cases archive, file-a-finding
+  (Agent ID checker + filing prompt), claim (Check a Finding + claim prompt),
+  token, marketplace, FAQ, details/contracts, footer/share, sticky-header +
+  floating File buttons
+- `market.html` — marketplace page (escrow rules, empty state, listing prompt)
+- `SKILL.md` / `llms.txt` — agent instructions for filing, claiming, and trading
+- `README.md` — project overview, file map, deploy steps (described only)
+- Artwork: `assets/hero.jpg` (hero), `assets/claim.jpg` (claim section) — already
+  produced, referenced by relative path; no images are generated by this build
+
+## Rules
+
+- No X handle exists — write "to be announced"
+- No Vercel/GitHub mentions on the page
+- No promised returns; nothing is financial advice
+- No fake counts — archive and live panels read from chain, with preview fallback text
+- No wallet connect anywhere; the page carries the line "No wallet connects here"
+- Do NOT deploy anything as part of this build
