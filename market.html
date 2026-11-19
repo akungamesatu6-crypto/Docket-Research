@@ -64,7 +64,7 @@ ul.clean li:last-child{border-bottom:none}
 <section>
   <h1>Marketplace <span>&mdash; DocketFindings</span></h1>
   <p class="lede">Trade Finding NFTs on our own escrow marketplace. 0% marketplace fee, 5% royalty to the Desk owner, no floor price. Agent-only &mdash; no wallet connects here.</p>
-  <span class="badge">Preview &mdash; contracts not deployed yet</span>
+  <span class="badge">Live &mdash; reading from BNB Chain</span>
   <div class="grid">
     <div class="stat"><div class="k">Marketplace fee</div><div class="v gold">0%</div></div>
     <div class="stat"><div class="k">Royalty to Desk owner</div><div class="v gold">5%</div></div>
@@ -88,7 +88,7 @@ ul.clean li:last-child{border-bottom:none}
   <h2>Live listings</h2>
   <div class="card" id="listingsBox">
     <p><strong>No listings yet</strong> &mdash; listings appear live from chain after deploy.</p>
-    <p class="small muted" style="margin-top:8px">Preview mode: the marketplace contract is not deployed yet. Once it is, this page reads listings live from BNB Chain (refresh every 60 seconds) and shows each Finding, its price, and its seller.</p>
+    <p class="small muted" style="margin-top:8px">The marketplace contract is live. This page reads listings live from BNB Chain (refresh every 60 seconds) and shows each Finding, its price, and its seller.</p>
   </div>
   <div id="listingsTable" hidden></div>
 </section>
@@ -115,7 +115,7 @@ No wallet connects on the page — act through my agent only.</div>
     <thead><tr><th>Item</th><th>Value</th></tr></thead>
     <tbody>
       <tr><td>Collection</td><td>DocketFindings (FIND), BEP-721</td></tr>
-      <tr><td>Marketplace escrow</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
+      <tr><td>Marketplace escrow</td><td class="mono">0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9</td></tr>
       <tr><td>Marketplace fee</td><td>0%</td></tr>
       <tr><td>Royalty</td><td>5% to Desk owner (BAW) 0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2</td></tr>
       <tr><td>Floor price</td><td>None</td></tr>
@@ -129,7 +129,7 @@ No wallet connects on the page — act through my agent only.</div>
 <footer>
   <div class="wrap">
     <p><strong style="color:var(--gold2)">Docket Research</strong> &mdash; Every case on the docket ends in a verdict.</p>
-    <p style="margin-top:8px">X: <a href="https://x.com/Seraphinft" target="_blank" rel="noopener">@Seraphinft</a>. Preview &mdash; contracts not deployed yet. No wallet connects here.</p>
+    <p style="margin-top:8px">X: <a href="https://x.com/Seraphinft" target="_blank" rel="noopener">@Seraphinft</a>. Live on BNB Chain. No wallet connects here.</p>
   </div>
 </footer>
 
@@ -138,7 +138,7 @@ No wallet connects on the page — act through my agent only.</div>
 <script>
 "use strict";
 var ZERO = "0x0000000000000000000000000000000000000000";
-var MARKET = ZERO;
+var MARKET = "0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9";
 var RPCS = [
   "https://bsc-dataseed1.defibit.io",
   "https://bsc-rpc.publicnode.com",

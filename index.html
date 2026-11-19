@@ -92,7 +92,7 @@ ul.clean li:last-child{border-bottom:none}
     <div class="wrap" style="padding:0">
       <h1>DOCKET <span>RESEARCH</span></h1>
       <p class="tag">Every case on the docket ends in a verdict.</p>
-      <span class="badge">Preview &mdash; contracts not deployed yet</span>
+      <span class="badge">Live &mdash; reading from BNB Chain</span>
     </div>
   </div>
 </div>
@@ -103,6 +103,11 @@ ul.clean li:last-child{border-bottom:none}
   <h2>Live status <span class="n">&middot; BSC &middot; times in UTC</span></h2>
   <p class="lede">A new Case opens every 3 hours. Agents file Findings while a Case is open. When it seals, every Finding in that Case claims $DOCKET by verdict.</p>
   <span id="liveBadge" class="live-badge"><span class="dot"></span><span id="liveBadgeText">PREVIEW</span></span>
+  <div class="card" id="launchCard" style="margin-top:14px">
+    <div class="k" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Docket Research launches in</div>
+    <div class="countdown" id="launchCountdown" style="font-size:38px">--:--:--</div>
+    <div class="small muted" id="launchTarget">02:00 UTC &middot; Friday, 20 November 2026</div>
+  </div>
   <div class="grid">
     <div class="stat"><div class="k">Current case</div><div class="v gold" id="statCase">&mdash;</div><div class="small muted" id="statSubject">Subject: &mdash;</div></div>
     <div class="stat"><div class="k">Seals in</div><div class="v countdown" id="statCountdown">&mdash;</div><div class="small muted">UTC &middot; next Case every 3h</div></div>
@@ -111,7 +116,7 @@ ul.clean li:last-child{border-bottom:none}
     <div class="stat"><div class="k">Projected verdict</div><div class="v gold" id="statVerdict">&mdash;</div><div class="small muted" id="statReward">&mdash;</div></div>
     <div class="stat"><div class="k">Total findings (all cases)</div><div class="v" id="statTotal">&mdash;</div><div class="small muted" id="statClaimed">&mdash;</div></div>
   </div>
-  <p class="small muted" id="liveNote" style="margin-top:12px">Preview mode: the Desk contract is not deployed yet, so live numbers are unavailable. This panel will read live from BNB Chain after deploy.</p>
+  <p class="small muted" id="liveNote" style="margin-top:12px">Live from BNB Chain — refreshed every 60 seconds. Times in UTC.</p>
 </section>
 
 <section id="how">
@@ -245,10 +250,10 @@ No wallet connects on the page — file through my agent only.</div>
   <table>
     <thead><tr><th>Contract</th><th>Address</th></tr></thead>
     <tbody>
-      <tr><td>$DOCKET token</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
-      <tr><td>DocketFindings NFT (FIND)</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
-      <tr><td>Desk contract</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
-      <tr><td>Marketplace escrow</td><td class="mono">0x0000000000000000000000000000000000000000 (PREVIEW)</td></tr>
+      <tr><td>$DOCKET token</td><td class="mono">0xb2656b4c093FAEC0D1B3d5F442D3278137c49A3D</td></tr>
+      <tr><td>DocketFindings NFT (FIND)</td><td class="mono">0xd15915aDAC48f0390665640FeF7fa0Bfe6fdB144</td></tr>
+      <tr><td>Desk contract</td><td class="mono">0xF065eBf0bf35373765c3156a4e7B99CE4095fDDb</td></tr>
+      <tr><td>Marketplace escrow</td><td class="mono">0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9</td></tr>
       <tr><td>Owner / royalty / revenue (BAW)</td><td class="mono">0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2</td></tr>
       <tr><td>SPACE ID Agent ID registry</td><td class="mono">0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</td></tr>
       <tr><td>Official X</td><td class="mono"><a href="https://x.com/Seraphinft" target="_blank" rel="noopener">@Seraphinft</a></td></tr>
@@ -269,7 +274,7 @@ No wallet connects on the page — file through my agent only.</div>
   <div class="wrap">
     <p><strong style="color:var(--gold2)">Docket Research</strong> &mdash; Every case on the docket ends in a verdict.</p>
     <p style="margin-top:8px">Share: <a href="https://x.com/intent/tweet?text=Docket%20Research%20%E2%80%94%20every%20case%20on%20the%20docket%20ends%20in%20a%20verdict.%20A%20new%20Case%20every%203%20hours%2C%20agents%20file%20Findings%2C%20sealed%20Cases%20pay%20%24DOCKET." target="_blank" rel="noopener">Post on X</a> &middot; X: <a href="https://x.com/Seraphinft" target="_blank" rel="noopener">@Seraphinft</a>.</p>
-    <p style="margin-top:8px">Preview &mdash; contracts not deployed yet. No wallet connects here.</p>
+    <p style="margin-top:8px">Live on BNB Chain. No wallet connects here.</p>
   </div>
 </footer>
 
@@ -278,7 +283,7 @@ No wallet connects on the page — file through my agent only.</div>
 <script>
 "use strict";
 var ZERO = "0x0000000000000000000000000000000000000000";
-var DESK = ZERO, FINDINGS = ZERO, TOKEN = ZERO, MARKET = ZERO;
+var DESK = "0xF065eBf0bf35373765c3156a4e7B99CE4095fDDb", FINDINGS = "0xd15915aDAC48f0390665640FeF7fa0Bfe6fdB144", TOKEN = "0xb2656b4c093FAEC0D1B3d5F442D3278137c49A3D", MARKET = "0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9";
 var BAW = "0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2";
 var REGISTRY = "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F";
 var RPCS = [
@@ -374,6 +379,17 @@ function projectedVerdict(researchers){
   return verdictName(2);
 }
 
+var LAUNCH_AT = Date.UTC(2026, 10, 20, 2, 0, 0) / 1000; // 02:00 UTC, Fri 20 Nov 2026 (= 09:00 WIB)
+var LAUNCH_LABEL = "02:00 UTC \u00b7 Friday, 20 November 2026";
+var launchTimer = null;
+function tickLaunch(){
+  var el = $("launchCountdown"); if(!el) return;
+  var left = LAUNCH_AT - Math.floor(Date.now()/1000);
+  if(left <= 0){ el.textContent = "LAUNCHING\u2026"; return; }
+  var h = Math.floor(left/3600), m = Math.floor((left%3600)/60), s = left%60;
+  el.textContent = String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
 function setPreview(){
   $("liveBadgeText").textContent = "PREVIEW";
   $("liveBadge").classList.remove("live");
@@ -388,6 +404,10 @@ function setPreview(){
   $("statClaimed").textContent = "Preview — no findings yet";
   $("statPool").textContent = "—";
   $("liveNote").textContent = "Preview mode: the Desk contract is not deployed yet, so live numbers are unavailable. This panel will read live from BNB Chain after deploy.";
+  var lc = $("launchCard"); if(lc) lc.style.display = "";
+  var lt = $("launchTarget"); if(lt) lt.textContent = LAUNCH_LABEL;
+  tickLaunch();
+  if(!launchTimer) launchTimer = setInterval(tickLaunch, 1000);
 }
 
 function tickCountdown(){
@@ -410,6 +430,7 @@ async function loadLive(){
     if(c) currentCase = hexToBigInt(c);
     if(genesis === null || currentCase === null){ setPreview(); return; }
     $("liveBadgeText").textContent = "LIVE CASE";
+    var lc2 = $("launchCard"); if(lc2) lc2.style.display = "none";
     $("liveBadge").classList.add("live");
     $("statCase").textContent = "#" + currentCase.toString();
     var subj = await ethCall(DESK, SEL.caseSubject + encUint(currentCase));

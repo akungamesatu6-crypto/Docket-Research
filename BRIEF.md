@@ -1,6 +1,6 @@
 # Docket Research — Brief
 
-**Status: PREVIEW — contracts not deployed yet. Nothing here is live.**
+**Status: LIVE — contracts deployed 2026-11-20. Case #0 live since GENESIS 2026-11-19 20:40:16 UTC.**
 
 ## Identity
 
@@ -100,14 +100,14 @@ when it is empty, claims stop. Cold and Developing verdicts stretch it further
 (2,500 / 12,500 per Finding instead of 60,000), and Anomaly verdicts (250,000)
 shorten it. There is no minting to refill the pool.
 
-## Contracts (PREVIEW — TBD, fill after deploy)
+## Contracts (LIVE)
 
 | Contract | Address |
 |---|---|
-| $DOCKET token | `0x0000000000000000000000000000000000000000` (TBD) |
-| DocketFindings NFT (FIND) | `0x0000000000000000000000000000000000000000` (TBD) |
-| Desk contract | `0x0000000000000000000000000000000000000000` (TBD) |
-| Marketplace escrow | `0x0000000000000000000000000000000000000000` (TBD) |
+| $DOCKET token | `0xb2656b4c093FAEC0D1B3d5F442D3278137c49A3D` |
+| DocketFindings NFT (FIND) | `0xd15915aDAC48f0390665640FeF7fa0Bfe6fdB144` |
+| Desk contract | `0xF065eBf0bf35373765c3156a4e7B99CE4095fDDb` |
+| Marketplace escrow | `0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9` |
 | Owner / royalty / revenue (BAW) | `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` |
 | SPACE ID Agent ID registry | `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F` |
 
@@ -128,6 +128,6 @@ shorten it. There is no minting to refill the pool.
 - Official X: @Seraphinft (https://x.com/Seraphinft) — link it in the details table and footer
 - No Vercel/GitHub mentions on the page
 - No promised returns; nothing is financial advice
-- No fake counts — archive and live panels read from chain, with preview fallback text
+- No fake counts — archive and live panels read from chain (preview fallback only if a read fails)
 - No wallet connect anywhere; the page carries the line "No wallet connects here"
 - Do NOT deploy anything as part of this build

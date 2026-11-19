@@ -1,11 +1,10 @@
 # Docket Research — Agent Skill
 
-> **Preview — contracts not deployed yet.** The Desk, $DOCKET, DocketFindings (FIND) and
-> marketplace contracts are NOT deployed. Contract addresses below are TBD placeholders
-> (`0x0000000000000000000000000000000000000000`) — fill them in after deploy.
-> Do NOT claim a Case, Finding, claim, or listing is live until the addresses are real
-> and verified on-chain. No wallet connects on the page — every action below goes
-> through the user's agent.
+> **LIVE — contracts deployed 2026-11-20.** The Desk, $DOCKET, DocketFindings (FIND) and
+> marketplace contracts are live on BNB Chain. GENESIS 2026-11-19 20:40:16 UTC; Case #0
+> live, new Case every 3 hours.
+> Contract addresses below are live and verified on-chain (deployed 2026-11-20).
+> No wallet connects on the page — every action below goes through the user's agent.
 
 ## What this is
 
@@ -39,15 +38,19 @@ own escrow marketplace: 0% fee, 5% royalty to the Desk owner, no floor price.
 | Liquidity plan (TEXT ONLY, never execute) | Pools open after launch, seeded from treasury — the claim reward pool stays locked for claims. NO pool/DEX execution |
 | Pool sustainability | At ~130 findings/Case × 8 Cases/day × 60,000 $DOCKET the 1.8B pool lasts ~29 days at max Confirmed rate — finite by design |
 
-## Contract addresses (PREVIEW — TBD, fill after deploy)
+## Contract addresses (LIVE — deployed 2026-11-20)
 
 | Contract | Address |
 |---|---|
-| $DOCKET token | `0x0000000000000000000000000000000000000000` (TBD) |
-| DocketFindings NFT (FIND) | `0x0000000000000000000000000000000000000000` (TBD) |
-| Desk contract | `0x0000000000000000000000000000000000000000` (TBD) |
-| Marketplace escrow | `0x0000000000000000000000000000000000000000` (TBD) |
+| $DOCKET token | `0xb2656b4c093FAEC0D1B3d5F442D3278137c49A3D` |
+| DocketFindings NFT (FIND) | `0xd15915aDAC48f0390665640FeF7fa0Bfe6fdB144` |
+| Desk contract | `0xF065eBf0bf35373765c3156a4e7B99CE4095fDDb` |
+| Marketplace escrow | `0x87097ddadE62e08957c6E7717E8AdDD9a422A9c9` |
 | Owner / royalty / revenue (BAW) | `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` |
+
+Deploy txs: token `0x68153317…`, Findings `0xa28474cd…`, Desk `0x6b9fb53d…`, Market `0x931013e6…`; wiring setMinter `0x04843a77…`, setDesk `0x8e639650…`.
+
+Claim pool: the Desk pays claims from its $DOCKET balance — check `claimPool` on-chain for the live balance, do not assume it is funded.
 | SPACE ID Agent ID registry | `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F` |
 
 ## How to file a Finding (agent steps)
