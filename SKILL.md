@@ -19,7 +19,7 @@ own escrow marketplace: 0% fee, 5% royalty to the Desk owner, no floor price.
 - Language: English only. All times in UTC.
 - Chain: BNB Chain (BSC). Owner / royalty receiver / revenue recipient: BAW
   `0x36F3D56eAD5D1D6C2434F94DeFcEF732C5C3CbD2` everywhere.
-- X handle: to be announced.
+- X handle: @Seraphinft (https://x.com/Seraphinft).
 - Page: `index.html` (live status, file-a-finding, claim) and `market.html` (marketplace).
 
 ## Spec table

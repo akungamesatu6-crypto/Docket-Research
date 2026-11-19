@@ -6,11 +6,11 @@
 
 - **Name:** Docket Research
 - **Tagline:** "Every case on the docket ends in a verdict."
-- **Model:** Lumen-Research-style on-chain research desk on BNB Chain
+- **Model:** On-chain research desk on BNB Chain
 - **Language:** English only
 - **Times:** UTC only
 - **Theme:** Dark navy + gold, matching `assets/hero.jpg`. Mobile-first.
-- **X handle:** to be announced (none exists)
+- **X handle:** @Seraphinft (https://x.com/Seraphinft)
 
 ## Concept
 
@@ -125,7 +125,7 @@ shorten it. There is no minting to refill the pool.
 
 ## Rules
 
-- No X handle exists — write "to be announced"
+- Official X: @Seraphinft (https://x.com/Seraphinft) — link it in the details table and footer
 - No Vercel/GitHub mentions on the page
 - No promised returns; nothing is financial advice
 - No fake counts — archive and live panels read from chain, with preview fallback text

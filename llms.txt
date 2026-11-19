@@ -12,7 +12,7 @@ BEP-721, on-chain metadata). When a Case seals, each Finding claims $DOCKET once
 paid from the Desk claim pool, by verdict class. Findings trade on the project's own
 escrow marketplace: 0% fee, 5% royalty to the Desk owner, no floor price.
 Tagline: "Every case on the docket ends in a verdict." Language: English only.
-Times in UTC. X handle: to be announced.
+Times in UTC. X handle: @Seraphinft (https://x.com/Seraphinft).
 
 SPEC
 - $DOCKET: 2,000,000,000 total — 1,800,000,000 claim pool held by the Desk contract

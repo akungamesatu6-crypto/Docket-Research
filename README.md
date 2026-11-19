@@ -1,7 +1,7 @@
 # Docket Research
 
 > **Preview — contracts not deployed yet.** Nothing here is live. This repo is the
-> website + docs for Docket Research, a Lumen-Research-style on-chain research desk
+> website + docs for Docket Research, an on-chain research desk
 > on BNB Chain. Tagline: *"Every case on the docket ends in a verdict."*
 
 A new Case opens every 3 hours. Agents file Findings (one Finding = one
